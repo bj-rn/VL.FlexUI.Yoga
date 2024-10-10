@@ -1,11 +1,11 @@
-<Project Sdk="Microsoft.NET.Sdk">
+﻿<Project Sdk="Microsoft.NET.Sdk">
   <PropertyGroup>
     <AssemblyName>YogaSharp</AssemblyName>
-    <PackageId>Haselnussbomber.YogaSharp</PackageId>
+    <PackageId>YogaSharp</PackageId>
     <Version>1.0.3</Version>
-    <Authors>Haselnussbomber</Authors>
-    <PackageProjectUrl>https://github.com/Haselnussbomber/YogaSharp</PackageProjectUrl>
-    <RepositoryUrl>https://github.com/Haselnussbomber/YogaSharp.git</RepositoryUrl>
+    <Authors></Authors>
+    <PackageProjectUrl></PackageProjectUrl>
+    <RepositoryUrl></RepositoryUrl>
     <PackageLicenseFile>LICENSE</PackageLicenseFile>
   </PropertyGroup>
 
@@ -35,28 +35,16 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <PackageReference Include="Microsoft.SourceLink.GitHub" Version="8.0.0" PrivateAssets="All" />
-  </ItemGroup>
-
-  <ItemGroup>
     <None Remove="packages.lock.json" />
   </ItemGroup>
 
   <ItemGroup>
-    <None
-      Condition="Exists('..\yoga\LICENSE')"
-      Include="..\yoga\LICENSE"
-      Pack="true"
-      PackagePath="" />
-    <None
-      Condition="Exists('..\yoga\build\yoga\$(Configuration)\yogacore.dll')"
-      Include="..\yoga\build\yoga\$(Configuration)\yogacore.dll"
-      Pack="true"
-      PackagePath="runtimes\win-x64\native" />
-    <None
-      Condition="Exists('..\yoga\build\yoga\$(Configuration)\yogacore.pdb')"
-      Include="..\yoga\build\yoga\$(Configuration)\yogacore.pdb"
-      Pack="true"
-      PackagePath="runtimes\win-x64\native" />
+    <None Condition="Exists('..\yoga\LICENSE')" Include="..\yoga\LICENSE" Pack="true" PackagePath="" />
+    <None Condition="Exists('..\yoga\build\yoga\$(Configuration)\yogacore.dll')" Include="..\yoga\build\yoga\$(Configuration)\yogacore.dll" Pack="true" PackagePath="runtimes\win-x64\native">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Condition="Exists('..\yoga\build\yoga\$(Configuration)\yogacore.pdb')" Include="..\yoga\build\yoga\$(Configuration)\yogacore.pdb" Pack="true" PackagePath="runtimes\win-x64\native">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
   </ItemGroup>
 </Project>
