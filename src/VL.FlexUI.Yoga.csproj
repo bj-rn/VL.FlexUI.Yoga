@@ -20,7 +20,6 @@
     <OutputPath>..\lib\</OutputPath>
     <RestorePackagesWithLockFile>true</RestorePackagesWithLockFile>
     <DebugType>full</DebugType>
-    <DisableRuntimeMarshalling>true</DisableRuntimeMarshalling>
     <GenerateDocumentationFile>true</GenerateDocumentationFile>
     <NoWarn>CS1591</NoWarn>
   </PropertyGroup>
