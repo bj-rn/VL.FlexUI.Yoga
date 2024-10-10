@@ -1,109 +1,80 @@
 using System;
 
-namespace YogaSharp;
-
-public unsafe struct YGConfig : IDisposable
+namespace Gilzoide.FlexUi.Yoga
 {
-    /// <inheritdoc cref="Interop.YGConfigGetDefault"/>
-    public static YGConfig* GetDefault()
+    public struct YGConfig : IDisposable, IEquatable<YGConfig>
     {
-        return Interop.YGConfigGetDefault();
-    }
+        internal IntPtr _configPtr;
 
-    /// <inheritdoc cref="Interop.YGConfigNew"/>
-    public static YGConfig* New()
-    {
-        return Interop.YGConfigNew();
-    }
+        public bool IsNull => _configPtr == IntPtr.Zero;
 
-    /// <inheritdoc cref="Interop.YGConfigFree(YGConfig*)"/>
-    public void Dispose()
-    {
-        fixed (YGConfig* ptr = &this)
-            Interop.YGConfigFree(ptr);
-    }
+        public static YGConfig GetDefaultConfig()
+        {
+            return new YGConfig
+            {
+                _configPtr = Yoga.YGConfigGetDefault(),
+            };
+        }
 
-    /// <inheritdoc cref="Interop.YGConfigSetUseWebDefaults(YGConfig*, bool)"/>
-    public void SetUseWebDefaults(bool enabled)
-    {
-        fixed (YGConfig* ptr = &this)
-            Interop.YGConfigSetUseWebDefaults(ptr, enabled);
-    }
+        public void Instantiate()
+        {
+            _configPtr = Yoga.YGConfigNew();
+        }
 
-    /// <inheritdoc cref="Interop.YGConfigGetUseWebDefaults(YGConfig*)"/>
-    public bool GetUseWebDefaults()
-    {
-        fixed (YGConfig* ptr = &this)
-            return Interop.YGConfigGetUseWebDefaults(ptr);
-    }
+        public void Dispose()
+        {
+            if (!IsNull)
+            {
+                Free();
+                _configPtr = IntPtr.Zero;
+            }
+        }
 
-    /// <inheritdoc cref="Interop.YGConfigSetPointScaleFactor(YGConfig*, float)"/>
-    public void SetPointScaleFactor(float pixelsInPoint)
-    {
-        fixed (YGConfig* ptr = &this)
-            Interop.YGConfigSetPointScaleFactor(ptr, pixelsInPoint);
-    }
+        public bool Equals(YGConfig other)
+        {
+            return _configPtr == other._configPtr;
+        }
 
-    /// <inheritdoc cref="Interop.YGConfigGetPointScaleFactor(YGConfig*)"/>
-    public float GetPointScaleFactor()
-    {
-        fixed (YGConfig* ptr = &this)
-            return Interop.YGConfigGetPointScaleFactor(ptr);
-    }
+        public void SetExperimentalFeatures(ExperimentalFeatureFlags experimentalFeatures)
+        {
+            SetExperimentalFeatureEnabled(ExperimentalFeature.WebFlexBasis, experimentalFeatures.HasFlag(ExperimentalFeatureFlags.WebFlexBasis));
+            SetExperimentalFeatureEnabled(ExperimentalFeature.AbsolutePercentageAgainstPaddingEdge, experimentalFeatures.HasFlag(ExperimentalFeatureFlags.AbsolutePercentageAgainstPaddingEdge));
+        }
 
-    /// <inheritdoc cref="Interop.YGConfigSetErrata(YGConfig*, YGErrata)"/>
-    public void SetErrata(YGErrata errata)
-    {
-        fixed (YGConfig* ptr = &this)
-            Interop.YGConfigSetErrata(ptr, errata);
-    }
+        #region YGConfig
 
-    /// <inheritdoc cref="Interop.YGConfigGetErrata(YGConfig*)"/>
-    public YGErrata GetErrata()
-    {
-        fixed (YGConfig* ptr = &this)
-            return Interop.YGConfigGetErrata(ptr);
-    }
+        public void Free()
+        {
+            if (!IsNull)
+            {
+                Yoga.YGConfigFree(_configPtr);
+            }
+        }
 
-    /// <inheritdoc cref="Interop.YGConfigSetContext(YGConfig*, void*)"/>
-    public unsafe void SetContext(void* context)
-    {
-        fixed (YGConfig* ptr = &this)
-            Interop.YGConfigSetContext(ptr, context);
-    }
+        public void SetPointScaleFactor(float enabled)
+        {
+            if (!IsNull)
+            {
+                Yoga.YGConfigSetPointScaleFactor(_configPtr, enabled);
+            }
+        }
 
-    /// <inheritdoc cref="Interop.YGConfigGetContext(YGConfig*)"/>
-    public unsafe void* GetContext()
-    {
-        fixed (YGConfig* ptr = &this)
-            return Interop.YGConfigGetContext(ptr);
-    }
+        public void SetErrata(Errata errata)
+        {
+            if (!IsNull)
+            {
+                Yoga.YGConfigSetErrata(_configPtr, errata);
+            }
+        }
 
-    /// <inheritdoc cref="Interop.YGConfigSetExperimentalFeatureEnabled(YGConfig*, YGExperimentalFeature, bool)"/>
-    public void SetContext(YGExperimentalFeature feature, bool enabled)
-    {
-        fixed (YGConfig* ptr = &this)
-            Interop.YGConfigSetExperimentalFeatureEnabled(ptr, feature, enabled);
-    }
+        public void SetExperimentalFeatureEnabled(ExperimentalFeature feature, bool enabled)
+        {
+            if (!IsNull)
+            {
+                Yoga.YGConfigSetExperimentalFeatureEnabled(_configPtr, feature, enabled);
+            }
+        }
 
-    /// <inheritdoc cref="Interop.YGConfigIsExperimentalFeatureEnabled(YGConfig*, YGExperimentalFeature)"/>
-    public bool IsExperimentalFeatureEnabled(YGExperimentalFeature feature)
-    {
-        fixed (YGConfig* ptr = &this)
-            return Interop.YGConfigIsExperimentalFeatureEnabled(ptr, feature);
-    }
-
-    /// <inheritdoc cref="Interop.YGConfigSetLogger(YGConfig*, nint)"/>
-    public void SetLogger(nint logger)
-    {
-        fixed (YGConfig* ptr = &this)
-            Interop.YGConfigSetLogger(ptr, logger);
-    }
-
-    /// <inheritdoc cref="Interop.YGConfigSetCloneNodeFunc(YGConfig*, nint)"/>
-    public void SetCloneNodeFunc(nint cloneFunc)
-    {
-        fixed (YGConfig* ptr = &this)
-            Interop.YGConfigSetCloneNodeFunc(ptr, cloneFunc);
+        #endregion
     }
 }

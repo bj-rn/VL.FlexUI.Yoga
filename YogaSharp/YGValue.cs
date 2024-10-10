@@ -1,35 +1,43 @@
+using System;
 using System.Runtime.InteropServices;
 
-namespace YogaSharp;
-
-[StructLayout(LayoutKind.Sequential)]
-public struct YGValue
+namespace Gilzoide.FlexUi.Yoga
 {
-    public float value;
-    public YGUnit unit;
-
-    public static YGValue Undefined
-        => new() { value = float.NaN, unit = YGUnit.Undefined };
-
-    public static YGValue Auto
-        => new() { value = float.NaN, unit = YGUnit.Auto };
-
-    public static YGValue Percent(float value)
-        => new() { value = value, unit = YGUnit.Percent };
-
-    public static YGValue Point(float value)
-        => new() { value = value, unit = YGUnit.Point };
-
-    public static implicit operator YGValue(float value) => Point(value);
-
-    public override string ToString()
+    /// <summary>
+    /// Value struct that supports point/pixel values, percentages, Undefined and Auto special values.
+    /// </summary>
+    [Serializable]
+    [StructLayout(LayoutKind.Sequential)]
+    public struct YGValue
     {
-        return unit switch
+        public float Value;
+        public Unit Unit;
+
+        public YGValue(float value, Unit unit)
         {
-            YGUnit.Auto => "Auto",
-            YGUnit.Point => $"{value}",
-            YGUnit.Percent => $"{value}%",
-            _ => "Undefined"
-        };
+            Value = value;
+            Unit = unit;
+        }
+
+        /// <summary>
+        /// Factory method for creating a Percent value.
+        /// </summary>
+        /// <param name="value">Percent value. E.g.: passing 100 returns a value of 100%.</param>
+        public static YGValue Percent(float value)
+        {
+            return new YGValue(value, Unit.Percent);
+        }
+
+        public static implicit operator YGValue(float value)
+        {
+            return new YGValue(value, Unit.Point);
+        }
+
+        /// <summary>Zero value</summary>
+        public static readonly YGValue Zero = new YGValue(0, Unit.Point);
+        /// <summary>Undefined special value</summary>
+        public static readonly YGValue Undefined = new YGValue(float.NaN, Unit.Undefined);
+        /// <summary>Auto special value</summary>
+        public static readonly YGValue Auto = new YGValue(float.NaN, Unit.Auto);
     }
 }

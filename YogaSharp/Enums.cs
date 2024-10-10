@@ -1,146 +1,136 @@
-namespace YogaSharp;
+// Reference: https://github.com/facebook/yoga/blob/main/yoga/YGEnums.h
+using System;
 
-public enum YGAlign
+namespace Gilzoide.FlexUi.Yoga
 {
-    Auto,
-    FlexStart,
-    Center,
-    FlexEnd,
-    Stretch,
-    Baseline,
-    SpaceBetween,
-    SpaceAround,
-    SpaceEvenly
-}
+    public enum Align
+    {
+        Auto,
+        FlexStart,
+        Center,
+        FlexEnd,
+        Stretch,
+        Baseline,
+        SpaceBetween,
+        SpaceAround,
+        SpaceEvenly,
+    }
 
-public enum YGDimension
-{
-    Width,
-    Height
-}
+    public enum Dimension
+    {
+        Width,
+        Height,
+    }
 
-public enum YGDirection
-{
-    Inherit,
-    LTR,
-    RTL
-}
+    public enum Direction
+    {
+        Inherit,
+        LTR,
+        RTL,
+    }
 
-public enum YGDisplay
-{
-    Flex,
-    None
-}
+    public enum Display
+    {
+        Flex,
+        None,
+    }
 
-public enum YGEdge
-{
-    Left,
-    Top,
-    Right,
-    Bottom,
-    Start,
-    End,
-    Horizontal,
-    Vertical,
-    All
-}
+    public enum Edge
+    {
+        Left,
+        Top,
+        Right,
+        Bottom,
+        Start,
+        End,
+        Horizontal,
+        Vertical,
+        All,
+    }
 
-public enum YGErrata
-{
-    None = 0,
-    StretchFlexBasis = 1,
-    AbsolutePositioningIncorrect = 2,
-    AbsolutePercentAgainstInnerSize = 4,
-    All = int.MaxValue,
-    Classic = int.MaxValue - 1
-}
+    [Flags]
+    public enum Errata
+    {
+        None = 0,
+        StretchFlexBasis = 1,
+        StartingEndingEdgeFromFlexDirection = 2,
+        PositionStaticBehavesLikeRelative = 4,
+        All = 2147483647,
+        Classic = 2147483646,
+    }
 
-public enum YGExperimentalFeature
-{
-    WebFlexBasis
-}
+    public enum ExperimentalFeature
+    {
+        WebFlexBasis,
+        AbsolutePercentageAgainstPaddingEdge,
+    }
 
-public enum YGFlexDirection
-{
-    Column,
-    ColumnReverse,
-    Row,
-    RowReverse
-}
+    [Flags]
+    public enum ExperimentalFeatureFlags
+    {
+        WebFlexBasis = 1 << ExperimentalFeature.WebFlexBasis,
+        AbsolutePercentageAgainstPaddingEdge = 1 << ExperimentalFeature.AbsolutePercentageAgainstPaddingEdge,
+    }
 
-public enum YGGutter
-{
-    Column,
-    Row,
-    All
-}
+    public enum FlexDirection
+    {
+        Column,
+        ColumnReverse,
+        Row,
+        RowReverse,
+    }
 
-public enum YGJustify
-{
-    FlexStart,
-    Center,
-    FlexEnd,
-    SpaceBetween,
-    SpaceAround,
-    SpaceEvenly
-}
+    public enum Gutter
+    {
+        Column,
+        Row,
+        All,
+    }
 
-public enum YGLogLevel
-{
-    Error,
-    Warn,
-    Info,
-    Debug,
-    Verbose,
-    Fatal
-}
+    public enum Justify
+    {
+        FlexStart,
+        Center,
+        FlexEnd,
+        SpaceBetween,
+        SpaceAround,
+        SpaceEvenly,
+    }
 
-public enum MeasureMode
-{
-    Undefined,
-    Exactly,
-    AtMost
-}
+    public enum Overflow
+    {
+        Visible,
+        Hidden,
+        Scroll,
+    }
 
-public enum NodeType
-{
-    Default,
-    Text
-}
+    public enum PositionType
+    {
+        Static,
+        Relative,
+        Absolute,
+    }
 
-public enum YGOverflow
-{
-    Visible,
-    Hidden,
-    Scroll
-}
+    [Flags]
+    public enum PrintOptions
+    {
+        Layout = 1,
+        Style = 2,
+        Children = 4,
+    }
 
-public enum PhysicalEdge
-{
-    Left,
-    Top,
-    Right,
-    Bottom
-}
+    public enum Unit
+    {
+        Undefined,
+        Point,
+        Percent,
+        Auto,
+    }
 
-public enum YGPositionType
-{
-    Static,
-    Relative,
-    Absolute
-}
-
-public enum YGUnit
-{
-    Undefined,
-    Point,
-    Percent,
-    Auto
-}
-
-public enum YGWrap
-{
-    NoWrap,
-    Wrap,
-    WrapReverse
+    public enum Wrap
+    {
+        NoWrap,
+        Wrap,
+        WrapReverse,
+    }
 }
