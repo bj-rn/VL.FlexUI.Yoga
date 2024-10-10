@@ -1,0 +1,64 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Document xmlns:p="property" xmlns:r="reflection" Id="MAbYv57guNXN9QXqkSyeZ7" LanguageVersion="2024.6.7-0171-g5da2a8cd29" Version="0.128">
+  <NugetDependency Id="U5eSoHCVSedMpUo3x2azcd" Location="VL.CoreLib" Version="2024.6.7-0171-g5da2a8cd29" />
+  <Patch Id="N35eBmMKXAAOzTKJltdve0">
+    <Canvas Id="TWwO0b1zNXxPcUUuJekfeK" DefaultCategory="Main" BordersChecked="false" CanvasType="FullCategory" />
+    <!--
+
+    ************************ Application ************************
+
+-->
+    <Node Name="Application" Bounds="100,100" Id="F8u9181VSAdO8kEEaZRBUh">
+      <p:NodeReference>
+        <Choice Kind="ContainerDefinition" Name="Process" />
+        <CategoryReference Kind="Category" Name="Primitive" />
+      </p:NodeReference>
+      <Patch Id="PdZSjtqk3gLNSx8Oaqj1X9">
+        <Canvas Id="CimMwwe2wSDMgKrxjdfr4I" CanvasType="Group">
+          <Node Bounds="279,217,120,92" Id="ImdDvhTKHlvL3fclcXCrbU">
+            <p:NodeReference LastCategoryFullName="Primitive" LastDependency="Builtin">
+              <Choice Kind="StatefulRegion" Name="Region (Stateful)" Fixed="true" />
+              <CategoryReference Kind="Category" Name="Primitive" />
+              <Choice Kind="ProcessStatefulRegion" Name="Cache" />
+            </p:NodeReference>
+            <Pin Id="IqHxaV9c8EWOxpOP4xAY8a" Name="Force" Kind="InputPin" />
+            <Pin Id="NDKnt0wHtzwOVEfUSntwjv" Name="Dispose Cached Outputs" Kind="InputPin" />
+            <Pin Id="IYxhqnbZ8R1MJRzsVT3izm" Name="Has Changed" Kind="OutputPin" />
+            <Patch Id="O6a56foyfoSM3d9J0l2UHl" ManuallySortedPins="true">
+              <Patch Id="PtwM5EZaDDGQKf7HEgzkYc" Name="Create" ManuallySortedPins="true" />
+              <Patch Id="TWy2gyKYaZvPDvLa4Y9jgB" Name="Then" ManuallySortedPins="true" />
+              <Node Bounds="323,257,64,26" Id="KasvMRlR9dpPwNuvu9kLtu">
+                <p:NodeReference LastCategoryFullName="VL.FlexUi.Yoga.YGNode" LastDependency="VL.FlexUI.Yoga.dll">
+                  <Choice Kind="NodeFlag" Name="Node" Fixed="true" />
+                  <CategoryReference Kind="AssemblyCategory" Name="YGNode" />
+                  <Choice Kind="OperationCallFlag" Name="Instantiate" />
+                </p:NodeReference>
+                <Pin Id="I71cmGF161eM5KsJBy6diT" Name="Input" Kind="StateInputPin" />
+                <Pin Id="FSTz3nYNJ4gO5snhOwqUcT" Name="Output" Kind="StateOutputPin" />
+              </Node>
+            </Patch>
+            <ControlPoint Id="TZ1EJEcJDQkL3JK1uIHe1k" Bounds="325,303" Alignment="Bottom" />
+          </Node>
+          <Node Bounds="279,140,54,19" Id="K3KUy8lKC65O4vyns13jFR">
+            <p:NodeReference LastCategoryFullName="Control" LastDependency="VL.CoreLib.vl">
+              <Choice Kind="NodeFlag" Name="Node" Fixed="true" />
+              <Choice Kind="ProcessAppFlag" Name="OnOpen" />
+            </p:NodeReference>
+            <Pin Id="B0R2IfPpOaBNQSC7nGOJzn" Name="Node Context" Kind="InputPin" IsHidden="true" />
+            <Pin Id="GPHMEW6qUecN91QEPImvpL" Name="Simulate" Kind="InputPin" />
+            <Pin Id="K0UK1pgGQ2BPuSLSNUZIyR" Name="Output" Kind="OutputPin" />
+          </Node>
+        </Canvas>
+        <Patch Id="Iy62k5uvuiROyhstfaS0EZ" Name="Create" />
+        <Patch Id="VoVwKzkUhMVQJ3508mpvOX" Name="Update" />
+        <ProcessDefinition Id="DXfpxQ1OPvCM3yk2SbX4X4">
+          <Fragment Id="TZfveUPTQlyLRpGSSlRs2v" Patch="Iy62k5uvuiROyhstfaS0EZ" Enabled="true" />
+          <Fragment Id="CdXd5MJ30inNKpkloVN0vJ" Patch="VoVwKzkUhMVQJ3508mpvOX" Enabled="true" />
+        </ProcessDefinition>
+        <Link Id="QikTX7WCGMfOPOwLiPYBb8" Ids="FSTz3nYNJ4gO5snhOwqUcT,TZ1EJEcJDQkL3JK1uIHe1k" />
+        <Link Id="IfcZj1mLntkNJkA5g7wVdv" Ids="K0UK1pgGQ2BPuSLSNUZIyR,IqHxaV9c8EWOxpOP4xAY8a" />
+      </Patch>
+    </Node>
+  </Patch>
+  <PlatformDependency Id="Q9yes0jN5AfMvH3nnkUiEO" Location="./bin/VL.FlexUI.Yoga.dll" />
+</Document>
