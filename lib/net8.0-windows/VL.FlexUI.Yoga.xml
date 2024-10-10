@@ -1,0 +1,28 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>VL.FlexUI.Yoga</name>
+    </assembly>
+    <members>
+        <member name="T:VL.FlexUI.Yoga.YGValue">
+            <summary>
+            Value struct that supports point/pixel values, percentages, Undefined and Auto special values.
+            </summary>
+        </member>
+        <member name="M:VL.FlexUI.Yoga.YGValue.Percent(System.Single)">
+            <summary>
+            Factory method for creating a Percent value.
+            </summary>
+            <param name="value">Percent value. E.g.: passing 100 returns a value of 100%.</param>
+        </member>
+        <member name="F:VL.FlexUI.Yoga.YGValue.Zero">
+            <summary>Zero value</summary>
+        </member>
+        <member name="F:VL.FlexUI.Yoga.YGValue.Undefined">
+            <summary>Undefined special value</summary>
+        </member>
+        <member name="F:VL.FlexUI.Yoga.YGValue.Auto">
+            <summary>Auto special value</summary>
+        </member>
+    </members>
+</doc>
