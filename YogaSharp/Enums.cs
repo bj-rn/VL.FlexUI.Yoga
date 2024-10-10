@@ -1,7 +1,7 @@
 // Reference: https://github.com/facebook/yoga/blob/main/yoga/YGEnums.h
 using System;
 
-namespace Gilzoide.FlexUi.Yoga
+namespace VL.FlexUi.Yoga
 {
     public enum Align
     {
