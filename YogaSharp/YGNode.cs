@@ -259,7 +259,7 @@ namespace VL.FlexUi.Yoga
             string error = Yoga.YGNodeInsertChild(_nodePtr, child._nodePtr, index);
             if (error != null)
             {
-                Debug.LogError(error);
+                System.Diagnostics.Trace.WriteLine(error);
                 return false;
             }
             else
@@ -281,7 +281,7 @@ namespace VL.FlexUi.Yoga
             string error = Yoga.YGNodeSetConfig(_nodePtr, config._configPtr);
             if (error != null)
             {
-                Debug.LogError(error);
+                System.Diagnostics.Trace.WriteLine(error);
             }
         }
 
