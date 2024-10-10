@@ -17,8 +17,7 @@
     <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
     <ProduceReferenceAssembly>false</ProduceReferenceAssembly>
     <CopyLocalLockFileAssemblies>true</CopyLocalLockFileAssemblies>
-    <AppendTargetFrameworkToOutputPath>false</AppendTargetFrameworkToOutputPath>
-    <OutputPath>..\bin\</OutputPath>
+    <OutputPath>..\lib\</OutputPath>
     <RestorePackagesWithLockFile>true</RestorePackagesWithLockFile>
     <DebugType>full</DebugType>
     <DisableRuntimeMarshalling>true</DisableRuntimeMarshalling>
