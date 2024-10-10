@@ -1,7 +1,7 @@
 using System;
 using System.Runtime.InteropServices;
 
-namespace VL.FlexUi.Yoga
+namespace VL.FlexUI.Yoga
 {
     public class Yoga
     {
