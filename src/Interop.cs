@@ -28,11 +28,11 @@ namespace VL.FlexUI.Yoga
 
         [DllImport(YogaDll, CallingConvention = CallingConvention.Cdecl)] public static extern void YGNodeCalculateLayout(IntPtr node, float availableWidth, float availableHeight, Direction ownerDirection);
 
-        [DllImport(YogaDll, CallingConvention = CallingConvention.Cdecl)] public static extern string YGNodeInsertChild(IntPtr node, IntPtr child, int index);
+        [DllImport(YogaDll, CallingConvention = CallingConvention.Cdecl)] public static extern void YGNodeInsertChild(IntPtr node, IntPtr child, int index);
         [DllImport(YogaDll, CallingConvention = CallingConvention.Cdecl)] public static extern void YGNodeRemoveChild(IntPtr node, IntPtr child);
         [DllImport(YogaDll, CallingConvention = CallingConvention.Cdecl)] public static extern void YGNodeRemoveAllChildren(IntPtr node);
 
-        [DllImport(YogaDll, CallingConvention = CallingConvention.Cdecl)] public static extern string YGNodeSetConfig(IntPtr node, IntPtr config);
+        [DllImport(YogaDll, CallingConvention = CallingConvention.Cdecl)] public static extern void YGNodeSetConfig(IntPtr node, IntPtr config);
 
         #endregion
 

@@ -254,18 +254,10 @@ namespace VL.FlexUI.Yoga
             Yoga.YGNodeCalculateLayout(_nodePtr, availableWidth, availableHeight, ownerDirection);
         }
 
-        public bool InsertChild(YGNode child, int index)
+        public void InsertChild(YGNode child, int index)
         {
-            string error = Yoga.YGNodeInsertChild(_nodePtr, child._nodePtr, index);
-            if (error != null)
-            {
-                System.Diagnostics.Trace.WriteLine(error);
-                return false;
-            }
-            else
-            {
-                return true;
-            }
+            Yoga.YGNodeInsertChild(_nodePtr, child._nodePtr, index);
+
         }
         public void RemoveChild(YGNode child)
         {
@@ -278,11 +270,8 @@ namespace VL.FlexUI.Yoga
 
         public void SetConfig(YGConfig config)
         {
-            string error = Yoga.YGNodeSetConfig(_nodePtr, config._configPtr);
-            if (error != null)
-            {
-                System.Diagnostics.Trace.WriteLine(error);
-            }
+          Yoga.YGNodeSetConfig(_nodePtr, config._configPtr);
+
         }
 
         #endregion
