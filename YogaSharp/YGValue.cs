@@ -1,7 +1,7 @@
 using System;
 using System.Runtime.InteropServices;
 
-namespace Gilzoide.FlexUi.Yoga
+namespace VL.FlexUi.Yoga
 {
     /// <summary>
     /// Value struct that supports point/pixel values, percentages, Undefined and Auto special values.

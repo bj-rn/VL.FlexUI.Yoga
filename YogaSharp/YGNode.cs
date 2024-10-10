@@ -1,6 +1,6 @@
 using System;
 
-namespace Gilzoide.FlexUi.Yoga
+namespace VL.FlexUi.Yoga
 {
     public struct YGNode : IDisposable, IEquatable<YGNode>
     {

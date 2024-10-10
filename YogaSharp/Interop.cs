@@ -5,9 +5,11 @@ namespace VL.FlexUi.Yoga
 {
     public class Yoga
     {
-
-        const string YogaDll = @"yogacore.dll";
-
+#if UNITY_WEBGL && !UNITY_EDITOR
+        const string YogaDll = "__Internal";
+#else
+        const string YogaDll = "flex-ui";
+#endif
 
         #region YGConfig
 
